@@ -29,7 +29,7 @@ Let's see how that goes, fingers crossed, and let's goooo!!!
 - [x] Check datastore.js file - ~10m
 - [x] Setup initial React project - ~20m
 - [x] Import datastore.js and create typings file ~20m
-- [ ] Display data table
+- [x] Display data table - ~10m
 - [ ] Create generic table component to showcase table data. Main purpose is to separate concerns and don't bloat main application file
 - [ ] Build "Filter bar" component - a bit do generic, most likely it will have more steps
 - [ ] Add unit tests and test the overall application
