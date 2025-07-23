@@ -1,41 +1,24 @@
 import './App.css';
 import '../src/shared/data/datastore.js';
+import Table, { type TableColumns } from './shared/components/Table/Table.tsx';
+import type { Product } from './shared/types/datastore';
 
 function App() {
-  const sortedTableHeaders = window.datastore.getProperties();
-  const tableRows = window.datastore.getProducts().map(product => {
-    const rowCells = sortedTableHeaders.map(prop =>
-      product.property_values.find(
-        propValues => propValues.property_id === prop.id,
-      ),
-    );
+  const columns: TableColumns = window.datastore
+    .getProperties()
+    .map(column => ({
+      key: column.id.toString(),
+      header: column.name,
+      content: (item: Product) =>
+        item.property_values.find(value => value.property_id === column.id)
+          ?.value ?? '---',
+    }));
 
-    return {
-      id: product.id,
-      cells: rowCells,
-    };
-  });
+  const items = window.datastore.getProducts();
 
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            {sortedTableHeaders.map(prop => (
-              <th key={prop.id}>{prop.name}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {tableRows.map(prop => (
-            <tr key={prop.id}>
-              {prop.cells.map(cell => (
-                <td>{cell?.value}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Table columns={columns} items={items} />
     </>
   );
 }
