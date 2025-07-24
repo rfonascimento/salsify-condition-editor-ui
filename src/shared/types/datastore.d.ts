@@ -12,6 +12,15 @@ export type Product = {
 
 export type PropertyType = 'string' | 'number' | 'enumerated';
 
+export type OperatorType =
+  | 'equals'
+  | 'greater_than'
+  | 'less_than'
+  | 'any'
+  | 'none'
+  | 'in'
+  | 'contains';
+
 export type Property = {
   id: number;
   name: string;
