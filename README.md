@@ -31,7 +31,23 @@ Let's see how that goes, fingers crossed, and let's goooo!!!
 - [x] Import datastore.js and create typings file ~20m
 - [x] Display data table - ~10m
 - [x] Create generic table component to showcase table data. Main purpose is to separate concerns and don't bloat main application file - ~40m
-- [ ] Build "Filter bar" component - a bit do generic, most likely it will have more steps
+- [x] Create operator mapper handler to enable filtering for each operator type and add unit tests since it has specific logic rules
+- [x] Create Filter component
+- [x] Use Filter component in application and adapt current application logic
 - [ ] Add unit tests and test the overall application
 - [ ] Support UI/UX concept
 - [ ] TBD
+
+### Architectural decisions
+- Table component is generic, currently it displays Products but it can display any type of data
+- Filters component is also generic, they do not rely on "Product" resources. It's a container, that receives properties and operators and delegates change events to an orchestrator component that will know how to handle those changes. Again, this is to make the Filters component generic and detach it from any specific use case.
+- Logic of how the filters are applied rely outside of the Filters component, again, as a separation of concerns. Filters component should not manipulate or filter any data.
+- Create a generic mapper of operators to centralize filtering logic associated with the datastore data and it's properties
+
+### Todo's
+- [ ] Improve accessibility
+- [ ] Support enumerator filter type
+- [ ] Add debounce when user is typing in the input for a better UX
+
+### Improvements & Concerns
+- Operators overlap between datastore operator type and Filters component typings. Currently they overlap, but if products support new operators, Filter component typings need to be updated. This is to have a separation of concerns. Filters need to be generic even though, they should be aware of type of operators that can be used.
