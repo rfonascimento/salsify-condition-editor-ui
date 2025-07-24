@@ -1,0 +1,10 @@
+.filtersContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 24px;
+    gap:24px
+}
+
+.clearButton {
+    margin-left: auto
+}
