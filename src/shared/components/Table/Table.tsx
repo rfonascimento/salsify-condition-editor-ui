@@ -3,6 +3,7 @@ import type { FC, ReactNode } from 'react';
 interface TableProps<I = any> {
   columns: TableColumns<I>;
   items: I[];
+  noItemsContent?: ReactNode | string;
 }
 
 interface TableColumn<I = any> {
@@ -48,12 +49,15 @@ const TableBody: FC<TableBodyProps> = ({ items, columns }) => {
   );
 };
 
-const Table: FC<TableProps> = ({ columns, items }) => {
+const Table: FC<TableProps> = ({ columns, items, noItemsContent }) => {
   return (
-    <table>
-      <TableHeader columns={columns} />
-      <TableBody items={items} columns={columns} />
-    </table>
+    <>
+      <table>
+        <TableHeader columns={columns} />
+        <TableBody items={items} columns={columns} />
+      </table>
+      {!items.length && noItemsContent}
+    </>
   );
 };
 
