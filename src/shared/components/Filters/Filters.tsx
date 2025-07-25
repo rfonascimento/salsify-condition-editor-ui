@@ -63,7 +63,10 @@ const Filters: FC<FiltersProps> = ({
   const [searchValue, setSearchValue] = useState<string>('');
 
   const isOperatorDisabled = !selectedProperty;
-  const isSearchValueVisible = !!selectedOperator && selectedOperator !== 'any' && selectedOperator !== 'none';
+  const isSearchValueVisible =
+    !!selectedOperator &&
+    selectedOperator !== 'any' &&
+    selectedOperator !== 'none';
 
   useEffect(() => {
     handleOnChange({
@@ -112,11 +115,11 @@ const Filters: FC<FiltersProps> = ({
     [selectedOperator],
   );
 
-  const handleClearFilters = useCallback(() =>{
+  const handleClearFilters = useCallback(() => {
     setSelectedProperty('');
     setSelectedOperator('');
     setSearchValue('');
-  }, [])
+  }, []);
 
   const SearchInput = useMemo(() => {
     if (!isSearchValueVisible) {
@@ -130,6 +133,8 @@ const Filters: FC<FiltersProps> = ({
         case 'string': {
           return (
             <input
+              id={'FiltersSearchInput'}
+              className={'input input-bordered'}
               type={'text'}
               placeholder={'Search ...'}
               value={searchValue}
@@ -140,6 +145,8 @@ const Filters: FC<FiltersProps> = ({
         case 'number': {
           return (
             <input
+              id={'FiltersSearchInput'}
+              className={'input input-bordered'}
               type={'number'}
               placeholder={'Search ...'}
               value={searchValue}
@@ -151,6 +158,8 @@ const Filters: FC<FiltersProps> = ({
         case 'enumerated': {
           return (
             <input
+              id={'FiltersSearchInput'}
+              className={'input input-bordered'}
               type={'text'}
               placeholder={'Search ...'}
               value={searchValue}
@@ -165,6 +174,7 @@ const Filters: FC<FiltersProps> = ({
   return (
     <div className={'filtersContainer'}>
       <select
+        className={'select select-bordered w-full max-w-xs'}
         name={'properties'}
         value={selectedProperty}
         onChange={handlePropertyChange}
@@ -180,6 +190,7 @@ const Filters: FC<FiltersProps> = ({
       </select>
 
       <select
+        className={'select select-bordered w-full max-w-xs'}
         name={'operators'}
         disabled={isOperatorDisabled}
         value={selectedOperator}
@@ -197,7 +208,12 @@ const Filters: FC<FiltersProps> = ({
 
       {isSearchValueVisible && SearchInput}
 
-      <button className={'clearButton'} onClick={handleClearFilters}>Clear</button>
+      <button
+        className={'clearButton btn btn-primary'}
+        onClick={handleClearFilters}
+      >
+        Clear
+      </button>
     </div>
   );
 };

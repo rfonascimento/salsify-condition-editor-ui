@@ -27,7 +27,9 @@ const TableHeader: FC<TableHeaderProps> = ({ columns }) => {
     <thead>
       <tr>
         {columns.map((column, i) => (
-          <th key={i}>{column.header}</th>
+          <th className={'text-left'} key={i}>
+            {column.header}
+          </th>
         ))}
       </tr>
     </thead>
@@ -41,7 +43,9 @@ const TableBody: FC<TableBodyProps> = ({ items, columns }) => {
       {items.map(item => (
         <tr key={item.id}>
           {columns.map((column, i) => (
-            <td key={i}>{column.content(item)}</td>
+            <td className={'text-left'} key={i}>
+              {column.content(item)}
+            </td>
           ))}
         </tr>
       ))}
@@ -52,7 +56,7 @@ const TableBody: FC<TableBodyProps> = ({ items, columns }) => {
 const Table: FC<TableProps> = ({ columns, items, noItemsContent }) => {
   return (
     <>
-      <table>
+      <table className={'table w-full'}>
         <TableHeader columns={columns} />
         <TableBody items={items} columns={columns} />
       </table>
