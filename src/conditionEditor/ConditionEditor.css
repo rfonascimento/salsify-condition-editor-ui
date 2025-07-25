@@ -1,0 +1,9 @@
+.conditionEditorContainer {
+    margin: auto;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    gap: 48px;
+    padding: 100px 0;
+}
