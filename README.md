@@ -23,6 +23,10 @@ This means, that the UI/UX concept and designs, tests will be considered only la
 The end goal should not change, but in the case that I'll not make it through the end, still I've something to showcase!
 Let's see how that goes, fingers crossed, and let's goooo!!!
 
+Update #1:
+Well the end result is not what I expected initially, specially for the UI and I hoped to have completely to 100% the exercise but given the time constraints I could not. 
+Enumerators filtering was left out, sorry.
+
 ### The Plan
 
 - [x] Read the docs and understand the exercise - ~20m
@@ -31,12 +35,11 @@ Let's see how that goes, fingers crossed, and let's goooo!!!
 - [x] Import datastore.js and create typings file ~20m
 - [x] Display data table - ~10m
 - [x] Create generic table component to showcase table data. Main purpose is to separate concerns and don't bloat main application file - ~40m
-- [x] Create operator mapper handler to enable filtering for each operator type and add unit tests since it has specific logic rules
-- [x] Create Filter component
-- [x] Use Filter component in application and adapt current application logic
-- [ ] Add unit tests and test the overall application
-- [ ] Support UI/UX concept
-- [ ] TBD
+- [x] Create operator mapper handler to enable filtering for each operator type and add unit tests since it has specific logic rules ~1h
+- [x] Create Filter component - ~2h
+- [x] Use Filter component in application and adapt current application logic - ~1h
+- [ ] Add unit tests and test the overall application. Tests were only added to operator mapper handler. Reason: time constraints
+- [x] Support UI/UX concept - ~1h
 
 ### Architectural decisions
 - Table component is generic, currently it displays Products but it can display any type of data
@@ -47,7 +50,7 @@ Let's see how that goes, fingers crossed, and let's goooo!!!
 ### Todo's
 - [ ] Improve accessibility
 - [ ] Support enumerator filter type
-- [ ] Add debounce when user is typing in the input for a better UX
+- [ ] Add debounce when user is typing in the input for a better UX.
 
 ### Improvements & Concerns
 - Operators overlap between datastore operator type and Filters component typings. Currently they overlap, but if products support new operators, Filter component typings need to be updated. This is to have a separation of concerns. Filters need to be generic even though, they should be aware of type of operators that can be used.
